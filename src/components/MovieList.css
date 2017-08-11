@@ -1,0 +1,135 @@
+.MovieList_Main {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  background-color: #b6b6b6;
+  background-image: url("./../movie.jpg");
+  background-size: cover;
+  background-attachment: fixed; }
+
+.MovieList__Movie_Main {
+  display: flex;
+  flex-flow: row wrap;
+  margin: 10px;
+  box-shadow: 2px 2px 5px #232323;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.8);
+  position: relative;
+  cursor: default;
+  -moz-transition-property: box-shadow;
+  transition-property: box-shadow;
+  transition-duration: 0.5s;
+  text-decoration: none;
+  color: black;
+  justify-content: center; }
+  .MovieList__Movie_Main:hover {
+    box-shadow: 5px 5px 5px #232323; }
+
+.MovieList__Poster_Main {
+  width: 185px;
+  height: 278px;
+  border-radius: 10px 0 0 10px; }
+
+.MovieList__Describe_Main {
+  max-width: 208px;
+  text-align: left;
+  font-family: Times, "Times New Roman", Georgia, serif; }
+
+.MovieList__MovieTitle_Main {
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 1em;
+  padding: 5px; }
+
+.MovieList__ReleaseDate_Main {
+  padding: 3px; }
+
+.MovieList__Genre_Main {
+  padding: 3px;
+  font-family: cursive;
+  font-size: 0.8em; }
+
+.MovieList__Overview_Main {
+  height: 126px;
+  line-height: 18px;
+  font-size: 0.9em;
+  overflow: hidden;
+  padding: 3px; }
+
+.MovieList__Rate_Main {
+  position: absolute;
+  padding: 3px;
+  align-self: right;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.8); }
+
+@media screen and (max-width: 600px) {
+  .MovieList__Movie_Main {
+    justify-content: center; } }
+
+.MovieList_Detailed {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center; }
+
+.MovieList__Movie_Detailed {
+  width: 185px;
+  margin: 10px;
+  box-shadow: 2px 2px 5px #232323;
+  background-color: rgba(210, 210, 210, 0.4);
+  border-radius: 10px;
+  position: relative;
+  cursor: default;
+  -moz-transition-property: box-shadow;
+  transition-property: box-shadow;
+  transition-duration: 0.5s;
+  text-decoration: none;
+  color: black;
+  justify-content: flex-start;
+  align-content: flex-start; }
+  .MovieList__Movie_Detailed:hover {
+    box-shadow: 5px 5px 5px #232323; }
+
+.MovieList__Poster_Detailed {
+  width: 185px;
+  height: 278px;
+  border-radius: 10px; }
+
+.MovieList__Describe_Detailed {
+  font-family: Times, "Times New Roman", Georgia, serif;
+  display: flex;
+  flex-flow: row wrap; }
+
+.MovieList__MovieTitle_Detailed {
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 0.85em;
+  padding: 3px;
+  flex-basis: 100%; }
+
+.MovieList__ReleaseDate_Detailed {
+  padding: 3px;
+  flex-basis: 50%;
+  text-align: left;
+  font-size: 0.8em; }
+
+.MovieList__Genre_Detailed {
+  padding: 3px;
+  font-family: cursive;
+  font-size: 0.7em;
+  flex-basis: 100%; }
+
+.MovieList__Overview_Detailed {
+  overflow: hidden;
+  visibility: hidden;
+  position: absolute; }
+
+.MovieList__Rate_Detailed {
+  padding: 3px;
+  text-align: right;
+  flex-basis: 50%;
+  font-size: 0.8em; }
+
+@media screen and (max-width: 600px) {
+  .MovieList__Movie_Detailed {
+    justify-content: center; } }
