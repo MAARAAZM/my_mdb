@@ -24,3 +24,11 @@
   margin: 10px;
   font-size: 0.8em;
 }
+
+@media screen and (max-width: 950px){
+
+  .Header__Button{
+    min-width: 250px;
+  }
+
+}

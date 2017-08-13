@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import './../style_reset.css'
 import './Main.css';
 import MovieList from './MovieList';
 import { Throttle } from 'react-throttle';
-import Button from './Button'
-import Requests from './../requests'
+import Button from './Button';
+import Requests from './../requests';
 
 
 class Main extends Component {
@@ -36,7 +35,8 @@ class Main extends Component {
             searchFailed: false,
             list: 'popular',
             queryText: '',
-            requestError: ''
+            requestError: '',
+            menu: false,
         };
     }
 
@@ -79,6 +79,13 @@ class Main extends Component {
                 isPageLoaded: e.target.value.length<2||false
             });
         }
+    }
+
+    _showMenu(){
+        this.setState({
+            menu: !this.state.menu
+        })
+
     }
 
     componentDidMount() {
@@ -128,10 +135,15 @@ class Main extends Component {
 
     render() {
         return (
-                <div className="App">
+                <div className="App" style={{position: this.state.menu?'fixed':''}}>
                     <div className="App-header">
+                        <img className="App__MenuButton" onClick={this._showMenu.bind(this)}
+                             src="hamburger.svg" alt="MenuButton"/>
+                        <div className="App__LogoWrapper">
                         <img className="App-logo" src="Logo.svg" alt="Logo"/>
                         <h2 className="App-Title">My Movie Database</h2>
+                        </div>
+                        <div className="App__MainMenu" style={{left: -!this.state.menu*300+'px'}}>
                         <Button className="Header__Button"
                                 evval="popular" buttonAction={this._changeList}
                                 value="Популярные фильмы"/>
@@ -149,7 +161,9 @@ class Main extends Component {
                                    placeholder="Search..."
                                    onChange={this._searchMovie.bind(this)}/>
                         </Throttle>
+                        </div>
                     </div>
+                    <div className="Main__MenuCover" onClick={this._showMenu.bind(this)} hidden={!this.state.menu}/>
                     <div>
                         <Button className="ChangePage__Button" evval='dec' buttonAction={this._changePage} value="<"/>
                         <span>{' Страница ' + this.state.page + ' из ' +  this.state.totalPages+' '}</span>

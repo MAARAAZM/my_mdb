@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Details.css';
+import './Main.css';
 import Requests from './../requests';
 import MovieList from './MovieList'
 
@@ -79,8 +80,7 @@ class Details extends Component {
     }
 
     _renderCollection(){
-        console.log(this.state.configuration);
-        console.log(this.state.movieDetails);
+       // console.log(this.state.movieDetails);
         if (this.state.collection){
             return(<div className="Movie__Collection" style={{backgroundImage: 'url('+
             this.state.configuration.secure_base_url + 'w780' +
