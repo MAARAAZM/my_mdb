@@ -1,178 +1,92 @@
 import React, { Component } from 'react';
-import './Main.css';
+import PropTypes from 'prop-types';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import '../style/Main.css';
 import MovieList from './MovieList';
-import { Throttle } from 'react-throttle';
-import Button from './Button';
-import Requests from './../requests';
-
+import Header from './Header';
+import ChangePageButtons from './ChangePageButtons';
+import * as actions from '../actions/actions';
+import * as actionsMain from '../actions/actionsMain';
 
 class Main extends Component {
+  componentDidMount() {
+    this.props.fetchConfiguration();
+    this.props.fetchGenres();
+    this.props.fetchMovieList(1, 'popular');
+  }
 
-    constructor(props) {
-        super(props);
-        this.api_key = process.env.REACT_APP_MOVIE_API_KEY;
-
-        this._fetchGenres = Requests.fetchGenres(this);
-
-        this._fetchConfigration = Requests.fetchConfiguration(this);
-
-        this._changePage = this._changePage.bind(this);
-
-        this._changeList=this._changeList.bind(this);
-
-        this._searchMoveeRequest = Requests.searchMovieRequest(this);
-        this._fetchMovieList = Requests.fetchMovieList(this);
-
-
-        this.state = {
-            movieListArray: [],
-            page: 1,
-            totalPages: '...',
-            genresList: null,
-            configuration: null,
-            isPageLoaded: false,
-            isSearching: false,
-            searchFailed: false,
-            list: 'popular',
-            queryText: '',
-            requestError: '',
-            menu: false,
-        };
+  renderMovieList() {
+    const lang = this.props.language;
+    if (this.props.requestError) return <div className="App__Error">{this.props.requestError}</div>;
+    if (this.props.searchFailed && this.props.isPageLoaded) {
+      return (<div className="App__NoResults">
+        {`${lang === 'ru' ? 'Поиск по запросу' : 'Search request'} '${
+          this.props.queryText}' ${lang === 'ru' ? 'не дал результатов' : 'has no results'}`}
+      </div>);
     }
-
-
-    _changePage(e){
-        let val=0;
-         if(e.target.dataset.evval==='inc'&&this.state.page < this.state.totalPages) val=1;
-         if(e.target.dataset.evval==='dec'&&this.state.page>1) val=-1;
-         this.setState ({
-                page: this.state.page + val,
-                isPageLoaded: !(val)
-            }
-         );
+    if (this.props.isPageLoaded) {
+      return (<div>
+        <MovieList movieListArray={this.props.movieListArray} classMod="_Main" />
+        <ChangePageButtons />
+      </div>
+      );
     }
+    return (<div className="App__LoadIndicator">
+      <img className="App-logo" src="Logo.svg" alt="Logo" />
+        Loading...
+    </div>
+    );
+  }
 
-    _changeList(e){
-        if (this.state.list !== e.target.dataset.evval||this.state.isSearching||this.state.page!==1){
-            this.setState ({
-                    list: e.target.dataset.evval,
-                    page: 1,
-                    queryText: '',
-                    isPageLoaded: false,
-                    isSearching: false
-                }
-            );
-        }
-    }
-
-    _searchMovie(e){
-        if (e.target.value.length > 2) {this.setState({
-            queryText: e.target.value,
-            isPageLoaded: false,
-            isSearching: true,
-            page: 1,
-        });
-        }
-        if (e.target.value.length===2&&this.state.isSearching){
-            this.setState({
-                isSearching: false,
-                isPageLoaded: e.target.value.length<2||false
-            });
-        }
-    }
-
-    _showMenu(){
-        this.setState({
-            menu: !this.state.menu
-        })
-
-    }
-
-    componentDidMount() {
-        this._fetchGenres();
-        this._fetchConfigration();
-    }
-
-
-    componentDidUpdate(){
-        if (!this.state.isPageLoaded&&this.state.configuration&&this.state.genresList&&!this.state.requestError){
-
-            if (this.state.isSearching){
-                this._searchMoveeRequest();
-
-        } else {
-            this._fetchMovieList();
-         }
-      }
-    }
-
-    _renderMovieList(){
-        if (this.state.requestError) return <div className="App__Error">{this.state.requestError}</div>;
-        if (this.state.isPageLoaded){
-            if(this.state.searchFailed){
-                return <div className="App__NoResults">
-                    {"Поиск по запросу '"+this.state.queryText+"' не дал результатов"}
-                    </div>
-            }
-            return  (<div>
-                <MovieList
-                    movieListArray={this.state.movieListArray}
-                    genresList={this.state.genresList}
-                    configuration={this.state.configuration}
-                    classMod='_Main'
-                />
-                <div>
-                    <Button className="ChangePage__Button" evval='dec' buttonAction={this._changePage} value="<"/>
-                    <span>{' Страница ' + this.state.page + ' из ' +  this.state.totalPages+' '}</span>
-                    <Button className="ChangePage__Button" evval='inc' buttonAction={this._changePage} value=">"/>
-                </div>
-            </div>);
-        }
-        else return <div className="App__LoadIndicator">
-                        <img className="App-logo" src="Logo.svg" alt="Logo"/>Loading...
-                    </div>;
-    }
-
-    render() {
-        return (
-                <div className="App" style={{position: this.state.menu?'fixed':''}}>
-                    <div className="App-header">
-                        <img className="App__MenuButton" onClick={this._showMenu.bind(this)}
-                             src="hamburger.svg" alt="MenuButton"/>
-                        <div className="App__LogoWrapper">
-                        <img className="App-logo" src="Logo.svg" alt="Logo"/>
-                        <h2 className="App-Title">My Movie Database</h2>
-                        </div>
-                        <div className="App__MainMenu" style={{left: -!this.state.menu*300+'px'}}>
-                        <Button className="Header__Button"
-                                evval="popular" buttonAction={this._changeList}
-                                value="Популярные фильмы"/>
-                        <Button className="Header__Button"
-                                evval="top_rated" buttonAction={this._changeList}
-                                value="Топ рейтинг"/>
-                        <Button className="Header__Button"
-                                evval="now_playing" buttonAction={this._changeList}
-                                value="Сейчас в прокате"/>
-                        <Button className="Header__Button"
-                                evval="upcoming" buttonAction={this._changeList}
-                                value="Скоро в прокате"/>
-                        <Throttle time="500" handler="onChange">
-                            <input className="Main__Search" type="text"
-                                   placeholder="Search..."
-                                   onChange={this._searchMovie.bind(this)}/>
-                        </Throttle>
-                        </div>
-                    </div>
-                    <div className="Main__MenuCover" onClick={this._showMenu.bind(this)} hidden={!this.state.menu}/>
-                    <div>
-                        <Button className="ChangePage__Button" evval='dec' buttonAction={this._changePage} value="<"/>
-                        <span>{' Страница ' + this.state.page + ' из ' +  this.state.totalPages+' '}</span>
-                        <Button className="ChangePage__Button" evval='inc' buttonAction={this._changePage} value=">"/>
-                    </div>
-                    <div>{this._renderMovieList()}</div>
-                </div>
-        )
-    }
+  render() {
+    return (
+      <div className="App" style={{ position: this.props.menu ? 'fixed' : '' }}>
+        <Header />
+        <ChangePageButtons />
+        <div>{this.renderMovieList()}</div>
+      </div>
+    );
+  }
 }
 
-export default Main;
+Main.propTypes = {
+  requestError: PropTypes.string.isRequired,
+  language: PropTypes.string.isRequired,
+  movieListArray: PropTypes.array.isRequired,
+  isPageLoaded: PropTypes.bool.isRequired,
+  queryText: PropTypes.string.isRequired,
+  searchFailed: PropTypes.bool.isRequired,
+  fetchGenres: PropTypes.func.isRequired,
+  fetchConfiguration: PropTypes.func.isRequired,
+  fetchMovieList: PropTypes.func.isRequired,
+  menu: PropTypes.bool.isRequired,
+};
+
+
+function mapStateToProps(state) {
+  return {
+    requestError: state.main.requestError,
+    list: state.main.list,
+    page: state.main.page,
+    movieListArray: state.main.movieListArray,
+    totalPages: state.main.totalPages,
+    isPageLoaded: state.main.isPageLoaded,
+    isSearching: state.main.isSearching,
+    queryText: state.main.queryText,
+    searchFailed: state.main.searchFailed,
+    language: state.main.language,
+    menu: state.main.menu,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    fetchGenres: bindActionCreators(actions.fetchGenres, dispatch),
+    fetchConfiguration: bindActionCreators(actions.fetchConfiguration, dispatch),
+    fetchMovieList: bindActionCreators(actionsMain.fetchMovieList, dispatch),
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Main);
+

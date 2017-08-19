@@ -1,0 +1,135 @@
+.Details__LoadIndicator{
+  margin-left: auto;
+  padding-top: 40vh;
+  font-size: 1.3em;
+  font-weight: bold;
+  background-color: #b6b6b6;
+  height: 100vh;
+  text-align: center;
+}
+
+.Details__Preload{
+  visibility: hidden;
+  position: absolute;
+  height: 200px;
+  width: 200px;
+}
+
+.Movie{
+  background-size: cover;
+  background-attachment: fixed;
+  background-color: #b6b6b6;;
+  text-align: center;
+  min-height: 100vh;
+}
+
+
+.Movie__Wrapper{
+  max-width: 850px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  margin: auto;
+  box-shadow: 2px 2px 5px #232323;
+  background-color: rgba(255, 255, 255, 0.8);
+  position: relative;
+  cursor: default;
+  -moz-transition-property: box-shadow;
+  transition-property: box-shadow;
+  transition-duration: 0.5s;
+  text-decoration: none;
+  color: black;
+}
+
+.Movie__Poster{
+ align-self: flex-start;
+  width: 342px;
+  height: 513px;
+}
+
+.Movie__Describe{
+  max-width: 500px;
+  text-align: left;
+  font-family: Times, "Times New Roman", Georgia, serif;
+  display: flex;
+  flex-flow: wrap;
+  justify-content: space-around;
+  align-content: flex-start;
+}
+
+
+.Movie__MovieTitle{
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 1.3em;
+  padding: 5px;
+  flex-basis: 100%;
+  align-self: flex-start;
+}
+
+.Movie__Tagline{
+  flex-basis: 100%;
+  align-self: flex-start;
+  font-size: 0.9em;
+  font-family: cursive;
+  padding-bottom: 5px;
+}
+
+.Movie__ReleaseDate{
+  padding: 3px;
+  flex-basis: 50%;
+  text-align: left;
+}
+.Movie__Rate{
+  padding: 3px;
+  flex-basis: 50%;
+  text-align: right;
+}
+
+.Movie__Genre{
+  padding: 3px;
+  font-family: cursive;
+  text-align: left;
+  flex-basis: 100%;
+}
+
+.Movie__Overview {
+  font-size: 1em;
+  padding: 5px;
+}
+
+.Movie__Countries{
+  flex-basis: 50%;
+  padding: 3px;
+}
+
+.Movie__Companies{
+  flex-basis: 50%;
+  padding: 3px;
+}
+
+.Movie__Budget{
+  flex-basis: 50%;
+  padding: 3px;
+}
+
+.Movie__Revenue{
+  flex-basis: 50%;
+  padding: 3px;
+}
+
+.Movie__Collection{
+  background-size: cover;
+
+}
+
+.Movie__CollectionCover{
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.Movie__CollectionWrapper{
+  flex-basis: 100%;
+  justify-self: stretch;
+}
+
+

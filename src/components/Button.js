@@ -1,17 +1,20 @@
-import React, { Component } from 'react';
-import './Button.css';
+import React from 'react';
+import PropTypes from 'prop-types';
+import '../style/Button.css';
 
 
-class Button extends Component {
+const Button = props => (<button
+  data-evval={props.evval}
+  onClick={props.buttonAction}
+  className={`${props.className} Button`}
+>{props.value}</button>
+);
 
+Button.propTypes = {
+  evval: PropTypes.string.isRequired,
+  buttonAction: PropTypes.func.isRequired,
+  className: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+};
 
-    render() {
-        return (
-            <button data-evval={this.props.evval} onClick={this.props.buttonAction} className={this.props.className+' Button'}>{this.props.value}</button>
-        )
-
-
-    }
-}
-
-export default Button
+export default Button;

@@ -7,11 +7,18 @@
   height: 100vh;
   text-align: center; }
 
+.Details__Preload {
+  visibility: hidden;
+  position: absolute;
+  height: 200px;
+  width: 200px; }
+
 .Movie {
   background-size: cover;
   background-attachment: fixed;
   background-color: #b6b6b6;
-  text-align: center; }
+  text-align: center;
+  min-height: 100vh; }
 
 .Movie__Wrapper {
   max-width: 850px;

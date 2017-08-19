@@ -19,6 +19,9 @@
   margin: 10px;
   font-size: 0.8em; }
 
+.Header_ChangeLanguage {
+  border-radius: 0; }
+
 @media screen and (max-width: 950px) {
   .Header__Button {
     min-width: 250px; } }
