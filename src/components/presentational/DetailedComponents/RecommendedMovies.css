@@ -1,0 +1,7 @@
+.RecommendedMovies__Title {
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 1.3em;
+  padding: 5px;
+  flex-basis: 100%;
+  align-self: flex-start; }

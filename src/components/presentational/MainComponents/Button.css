@@ -1,0 +1,9 @@
+.Button {
+  background-color: #a8a8a8;
+  border: none;
+  border-radius: 7px; }
+  .Button:hover {
+    background-color: #2070ff; }
+  .Button:focus {
+    background-color: #2070ff;
+    outline: none; }

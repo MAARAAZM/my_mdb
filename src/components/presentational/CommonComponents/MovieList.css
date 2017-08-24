@@ -1,0 +1,11 @@
+.MovieList_Main {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  background-size: cover; }
+
+.MovieList_Detailed {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  background: none; }

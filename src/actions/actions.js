@@ -23,9 +23,8 @@ export function fetchConfiguration() {
   };
 }
 
-export function fetchGenres() {
-  return (dispatch, getState) => {
-    const language = getState().main.language;
+export function fetchGenres(language) {
+  return (dispatch) => {
     const url = `https://api.themoviedb.org/3/genre/movie/list?language=${language}&api_key=`;
     fetch(url + apiKey).then(res => res.json()).then((data) => {
       if ('status_message' in data) {

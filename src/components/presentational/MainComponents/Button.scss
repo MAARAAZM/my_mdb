@@ -1,0 +1,13 @@
+.Button{
+  background-color: #a8a8a8;
+  border: none;
+  border-radius: 7px;
+
+  &:hover{
+    background-color: #2070ff;
+  }
+  &:focus{
+    background-color: #2070ff;
+    outline: none;
+  }
+}

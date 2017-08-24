@@ -1,0 +1,109 @@
+.MovieDatailedInformation{
+  background-size: cover;
+  background: #b6b6b6 fixed;;
+  text-align: center;
+  min-height: 100vh;
+}
+
+
+.MovieDatailedInformation__Wrapper{
+  max-width: 850px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  margin: auto;
+  box-shadow: 2px 2px 5px #232323;
+  background-color: rgba(255, 255, 255, 0.8);
+  position: relative;
+  cursor: default;
+  -moz-transition-property: box-shadow;
+  transition-property: box-shadow;
+  transition-duration: 0.5s;
+  text-decoration: none;
+  color: black;
+}
+
+.MovieDatailedInformation__Poster{
+  align-self: flex-start;
+  width: 342px;
+  height: 513px;
+}
+
+.MovieDatailedInformation__Describe{
+  max-width: 500px;
+  text-align: left;
+  font-family: Times, "Times New Roman", Georgia, serif;
+  display: flex;
+  flex-flow: wrap;
+  justify-content: space-around;
+  align-content: flex-start;
+}
+
+
+.MovieDatailedInformation__MovieTitle{
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 1.3em;
+  padding: 5px;
+  flex-basis: 100%;
+  align-self: flex-start;
+}
+
+.MovieDatailedInformation__Tagline{
+  flex-basis: 100%;
+  align-self: flex-start;
+  font-size: 0.9em;
+  font-family: cursive;
+  padding-bottom: 5px;
+}
+
+.MovieDatailedInformation__ReleaseDate{
+  padding: 3px;
+  flex-basis: 50%;
+  text-align: left;
+}
+.MovieDatailedInformation__Rate{
+  padding: 3px;
+  flex-basis: 50%;
+  text-align: right;
+}
+
+.MovieDatailedInformation__Genre{
+  padding: 3px;
+  font-family: cursive;
+  text-align: left;
+  flex-basis: 100%;
+}
+
+.MovieDatailedInformation__Overview {
+  font-size: 1em;
+  padding: 5px;
+}
+
+.MovieDatailedInformation__Countries{
+  flex-basis: 50%;
+  padding: 3px;
+}
+
+.MovieDatailedInformation__Companies{
+  flex-basis: 50%;
+  padding: 3px;
+}
+
+.MovieDatailedInformation__Budget{
+  flex-basis: 50%;
+  padding: 3px;
+}
+
+.MovieDatailedInformation__Revenue{
+  flex-basis: 50%;
+  padding: 3px;
+}
+
+
+.MovieDatailedInformation__CollectionWrapper{
+  flex-basis: 100%;
+  justify-self: stretch;
+}
+
+

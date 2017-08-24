@@ -1,0 +1,11 @@
+.RequestErrorMassage {
+  position: absolute;
+  margin-top: 10vh;
+  margin-left: 35%;
+  padding: 3px;
+  line-height: 25px;
+  background-color: #f7c5cc;
+  border-radius: 5px;
+  border: 2px solid #ff4149;
+  color: #9d0000;
+  font-size: 1em; }

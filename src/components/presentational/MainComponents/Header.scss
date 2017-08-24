@@ -1,0 +1,113 @@
+.Header {
+  background-color: #222;
+  padding: 20px;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+}
+
+.Header__MenuButton{
+  font-size: 1.5em;
+  color: white;
+  height: 40px;
+  padding: 3px;
+  border-radius: 10px;
+  background-color: #b6b6b6;
+  margin-right: 20px;
+  position: absolute;
+  display: none;
+}
+
+.Header__Button{
+  height: auto;
+  width: auto;
+  margin: 10px;
+  font-size: 0.8em;
+}
+
+.Header__ChangeLanguage{
+  border-radius: 0;
+}
+
+.Header__LogoWrapper{
+  display: flex;
+  align-items: center;
+  font-family: cursive;
+  font-size: 1.2em;
+  color: white;
+}
+
+.Header__Logo {
+  animation: LogoSpin infinite 20s linear;
+  height: 40px;
+  display: inline-block;
+}
+
+@keyframes LogoSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.Header__MainMenu{
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  font-size: 1.2em;
+  background-color: #222;
+}
+
+.Header__Title{
+  display: inline-block;
+  padding-left: 15px;
+  font-size: 1em;
+}
+
+.Header__Search{
+  background-color: #f7f7f7;
+  border-radius: 5px;
+  border: none;
+  height: 20px;
+  padding: 3px;
+  margin-right: 5px;
+}
+
+
+@media screen and (max-width: 950px){
+
+  .Header {
+    display: flex;
+    flex-flow: nowrap;
+  }
+
+  .Header__MainMenu {
+    flex-flow: column;
+    padding: 10px;
+    position: absolute;
+    top: 80px;
+    left: 0;
+    z-index: 100;
+    height: 100%;
+    transition-property: left;
+    -moz-transition-property: left;
+    transition-duration: 0.5s;
+  }
+
+  .Header__Button{
+    min-width: 250px;
+  }
+
+  .Header__MenuButton{
+    position: relative;
+    display: block;
+  }
+
+  .Header__MenuCover{
+    position: absolute;
+    top: 80px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(150,150,150,0.4);
+    z-index: 50;
+  }
+
+}

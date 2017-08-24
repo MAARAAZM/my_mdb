@@ -1,0 +1,210 @@
+.Movie_Main{
+    display: flex;
+    flex-flow: row wrap;
+    margin: 10px;
+    box-shadow: 2px 2px 5px #232323;
+    border-radius: 10px;
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.8);
+    cursor: default;
+    -moz-transition-property: box-shadow;
+    transition-property: box-shadow;
+    transition-duration: 0.5s;
+    text-decoration: none;
+    color: black;
+
+
+    &:hover{
+        box-shadow: 5px 5px 5px #232323;
+    }
+}
+
+.Movie__Poster_Main{
+    width: 185px;
+    height: 278px;
+    border-radius: 10px 0 0 10px;
+}
+
+.Movie__Describe_Main{
+    height: 278px;
+    max-width: 208px;
+    text-align: left;
+    font-family: Times, "Times New Roman", Georgia, serif;
+}
+
+
+.Movie__MovieTitle_Main{
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    font-size: 0.95em;
+    padding: 5px;
+}
+
+.Movie__ReleaseDate_Main{
+    padding: 3px;
+}
+
+
+.Movie__Genre_Main{
+    padding: 3px;
+    font-family: cursive;
+    font-size: 0.8em;
+}
+
+.Movie__Overview_Main {
+    height: 126px;
+    line-height: 18px;
+    font-size: 0.9em;
+    overflow: hidden;
+    padding: 3px;
+}
+
+.Movie__Rate_Main{
+    position: absolute;
+    padding: 3px;
+    align-self: right;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+/*_______________________________________________________*/
+
+.Movie_Detailed{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+.Movie_Detailed{
+    width: 185px;
+    margin: 10px;
+    box-shadow: 2px 2px 5px #232323;
+    background-color: rgba(210, 210, 210, 0.4);
+    border-radius: 10px;
+    position: relative;
+    cursor: default;
+    -moz-transition-property: box-shadow;
+    transition-property: box-shadow;
+    transition-duration: 0.5s;
+    text-decoration: none;
+    color: black;
+    justify-content: flex-start;
+    align-content: flex-start;
+
+
+
+    &:hover{
+        box-shadow: 5px 5px 5px #232323;
+    }
+}
+
+.Movie__Poster_Detailed{
+    width: 185px;
+    height: 278px;
+    border-radius: 10px;
+}
+
+.Movie__Describe_Detailed{
+    font-family: Times, "Times New Roman", Georgia, serif;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+
+.Movie__MovieTitle_Detailed{
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    font-size: 0.85em;
+    padding: 3px;
+    flex-basis: 100%;
+}
+
+.Movie__ReleaseDate_Detailed{
+    padding: 3px;
+    flex-basis: 50%;
+    text-align: left;
+    font-size: 0.8em;
+}
+
+
+.Movie__Genre_Detailed{
+    padding: 3px;
+    font-family: cursive;
+    font-size: 0.7em;
+    flex-basis: 100%;
+}
+
+.Movie__Overview_Detailed {
+    overflow: hidden;
+    visibility: hidden;
+    position: absolute;
+}
+
+.Movie__Rate_Detailed{
+    padding: 3px;
+    text-align: right;
+    flex-basis: 50%;
+    font-size: 0.8em;
+}
+
+@media screen and (max-width: 850px){
+    .Movie_Main{
+        display: block;
+    }
+
+    .Movie__Poster_Main{
+        width: 155px;
+        height: 231px;
+        border-radius: 10px;
+    }
+
+    .Movie__Describe_Main{
+        display: flex;
+        flex-flow: wrap;
+        height: auto;
+        max-width: 155px;
+        font-family: Times, "Times New Roman", Georgia, serif;
+        text-align: center;
+    }
+
+    .Movie__MovieTitle_Main{
+        font-family: Verdana, Arial, Helvetica, sans-serif;
+        font-weight: 600;
+        font-size: 0.85em;
+        padding: 3px;
+        flex-basis: 100%;
+    }
+
+    .Movie__Overview_Main {
+        display: none;
+        position: absolute;
+    }
+
+    .Movie__Rate_Main{
+        flex-basis: 50%;
+        position: relative;
+        padding: 3px;
+        text-align: right;
+        bottom: auto;
+        background: none;
+        font-size: 0.8em;
+    }
+    .Movie__ReleaseDate_Main{
+        padding: 3px;
+        flex-basis: 50%;
+        font-size: 0.8em;
+        text-align: left;
+    }
+    /*______________________________*/
+
+    .Movie__Poster_Detailed{
+        width: 155px;
+        height: 231px;
+        border-radius: 10px;
+    }
+
+    .Movie_Detailed{
+        width: 155px;
+    }
+
+}
