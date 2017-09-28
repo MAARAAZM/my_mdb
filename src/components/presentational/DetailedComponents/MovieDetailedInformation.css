@@ -1,5 +1,5 @@
 .MovieDatailedInformation {
-  background-size: cover;
+  background-size: contain;
   background: #b6b6b6 fixed;
   text-align: center;
   min-height: 100vh; }
